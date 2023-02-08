@@ -85,8 +85,8 @@
 .num3 .item:last-child .fleche-bas,
 .num4 .liste-item .item:first-child .fleche-haut,
 .num4 .liste-item .item:last-child .fleche-bas
-.num5 .item:first-child .fleche-haut,
-.num5 .item:last-child .fleche-bas
+.num5 .liste-item .item:first-child .fleche-haut,
+.num5 .liste-item .item:last-child .fleche-bas
 {
     visibility : hidden;
 }
