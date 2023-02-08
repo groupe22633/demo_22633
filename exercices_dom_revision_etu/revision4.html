@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="./src/num4.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Exercice de révision sur le DOM</h1>
+    <section class="num4">
+        <h2>Numéro 4 : Numéro 3 + Tri</h2>
+        <p>Créez le code javascript du numéro 3 et y ajouter la possibilité de trier les données selon la valeur de la propriété 'item'. Pour se faire, il faut que l'état des items sont bien conservés. Un item coché, doit resté coché</p>
+        <details>
+            <summary>Méthodes et propriétés pouvant être utiles : </summary>
+            <ul>
+                <li>DomElement.addEventListener()</li>
+                <li>événement load, click</li>
+                <li>DomElement.querySelector(), DomElement.querySelectorAll()</li>
+                <li>DomElement.innerHTML</li>
+                <li>DomElement.insertAdjacentHTML()</li>
+                <li>boucle Array.forEach ou for...in ou for...of ou simplement for</li>
+                <li>Array.findIndex</li>
+                <li>Array.sort</li>
+            </ul>
+        </details>
+        <p>Vous ne pouvez pas modifier le code du fichier html. Tout doit se faire par JavaScript, dans le fichier
+            num4.js</p>
+        <section class="liste-tri">
+            <div class="item">
+                <span data-tri="nom" class="tri">Par nom</span> 
+                <span class="btn fleche-haut"></span>
+            </div>
+        </section>
+        <section class="liste-item">
+            
+            <div class="item barre" data-id="1">
+                <input type="checkbox" checked>
+                <span class="nom">Item 1</span>
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+            <div class="item" data-id="2">
+                <input type="checkbox">
+                <span class="nom">Item 2</span> 
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+            <div class="item" data-id="3">
+                <input type="checkbox">
+                <span class="nom">Item 3</span> 
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+            <div class="item" data-id="4">
+                <input type="checkbox">
+                <span class="nom">Item 4</span> 
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+        </section>
+    </section>
+
+</body>
+
+</html>

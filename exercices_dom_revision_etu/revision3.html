@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="./src/num3.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Exercice de révision sur le DOM</h1>
+    <section class="num3">
+        <h2>Numéro 3 : Création d'une liste à partir de données dynamique</h2>
+        <p>Créez le code javascript qui permet de générer la liste d'items à partir des données fournies dans le tableau présent dans le fichier num3.js. La liste d'items doit être basée sur l'exemple dans la section liste-item. Votre code doit traiter les données et s'adapter si le nombre d'items change. Si un item à une propriété barre == true, vous devez cocher le checkbox et ajouter la classe barre sur div.item</p>
+        <p>Si le coeur vous en dit, programmez le fonctionnement des flèche (haut et bas) afin que les items se déplace dans le DOM.</p>
+        <p>Et pourquoi ne pas créer la fonction qui permet de lier l'état de la case à cocher et l'apparance de l'item. Quand l'utilisateur coche le "checkbox", vous devez ajouter la classe "barre" sur div.item, quand il décoche la case, la classe barre est retirée. </p>
+        <p>Bonus (ou pas) : Vous devez adapter l'état du tableau de données pour correspondre à l'état de l'affichage.</p>
+        <details>
+            <summary>Méthodes et propriétés pouvant être utiles : </summary>
+            <ul>
+                <li>DomElement.addEventListener()</li>
+                <li>événement load, click</li>
+                <li>DomElement.querySelector(), DomElement.querySelectorAll()</li>
+                <li>DomElement.innerHTML</li>
+                <li>DomElement.insertAdjacentHTML()</li>
+                <li>boucle Array.forEach ou for...in ou for...of ou simplement for</li>
+                <li>Array.findIndex</li>
+            </ul>
+        </details>
+        <p>Vous ne pouvez pas modifier le code du fichier html. Tout doit se faire par JavaScript, dans le fichier
+            num3.js</p>
+        <section class="liste-item">
+            <div class="item barre" data-id="1">
+                <input type="checkbox" checked>
+                <span class="nom">Item 1</span>
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+            <div class="item" data-id="2">
+                <input type="checkbox">
+                <span class="nom">Item 2</span> 
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+            <div class="item" data-id="3">
+                <input type="checkbox">
+                <span class="nom">Item 3</span> 
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+            <div class="item" data-id="4">
+                <input type="checkbox">
+                <span class="nom">Item 4</span> 
+                <span class="btn fleche-haut"></span>
+                <span class="btn fleche-bas"></span>
+            </div>
+        </section>
+    </section>
+
+</body>
+
+</html>

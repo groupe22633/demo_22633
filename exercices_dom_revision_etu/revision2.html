@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="./src/num2.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Exercice de révision sur le DOM</h1>
+    <section class="num2">
+        <h2>Révision 2 : Manipulation des classes</h2>
+        <p>Créez le code javascript qui permet de changer l'apparance les éléments du DOM pour configurer un tri. Lorsque l'utilisateur clic sur le nom du tri ou sur la flèche (Par nom, Par date, Par priorité) la flèche haut ou bas s'adapte en fonction de la séquence, ascendant, descendant, ascendant, etc. Les classes CSS fleche-haut et fleche-bas doivent être utilisées. Votre code doit être capable de gérer une liste plus ou moins longue d'items ou bien une liste dynamique.</p>
+        <details>
+            <summary>Méthodes et propriétés pouvant être utiles : </summary>
+            <ul>
+                <li>addEventListener()</li>
+                <li>événement load, click</li>
+                <li>querySelector(), querySelectorAll()</li>
+                <li>classList (add, remove, contains, etc)</li>
+                <li>parentElement, previousElementSibling, nextElementSibling</li>
+            </ul>
+        </details>
+        <p>Vous ne pouvez pas modifier le code du fichier html. Tout doit se faire par JavaScript, dans le fichier num2.js</p>
+        <section class="liste-tri">
+            <div class="item">
+                <span data-tri="nom" class="tri">Par nom</span> 
+                <span class="btn fleche-haut"></span>
+            </div>
+            <div class="item">
+                <span data-tri="date" class="tri">Par date</span> 
+                <span class="btn fleche-haut"></span>
+            </div>
+            <div class="item">
+                <span data-tri="priorite" class="tri">Par priorité</span> 
+                <span class="btn fleche-haut"></span>
+            </div>
+        </section>
+    </section>
+</body>
+</html>

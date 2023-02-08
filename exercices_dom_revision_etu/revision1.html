@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="./src/num1.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>Exercice de révision sur le DOM</h1>
+        <section class="num1">
+            <h2>Révision 1 : Lecture input </h2>
+            <p>Créez le code javascript qui permet à un utilisateur d'entrée un message dans une boite. Pour être valide le message doit comporter entre 20 et 100 caractères. Le bouton Soumettre doit être actif (disabled =false)seulement quand le message est valide. Le nombre de caractères est affiché. Le nombre doit toujours être exact, même au chargement de la page. </p>
+            <p>Question à se poser : est-ce que les événements change, keyup, keydown ou keypress ont le même comportement?</p>
+            <details>
+                <summary>Méthodes et propriétés pouvant être utiles : </summary>
+                <ul>
+                    <li>addEventListener (événement : load, change, keyup, keydown, keypress)</li>
+                    <li>querySelector, querySelectorAll</li>
+                    <li>classList (add, remove, contains, etc)</li>
+                    <li>Element.disabled</li>
+                </ul>
+            </details>
+            <p>Vous ne pouvez pas modifier le code du fichier html. Tout doit se faire par JavaScript, dans le fichier num1.js</p>
+            <section>
+                <input type="text" name="message">
+                <button type="submit" name="soumettre">Soumettre</button>
+        
+                <p>Votre texte contient : <span class="nombre_caractere"></span> caractères</p>
+            </section>
+        </section>
+        
+    </body>
+</html>
