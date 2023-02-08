@@ -1,0 +1,134 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+@keyframes AnimationDiv
+{
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(2,2);
+    }
+    100%
+    {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes AnimApparaitre
+{
+    0% {
+        transform: translateY(-100%);
+        border-color: #000;
+        border-width: 2px;
+    }
+    
+    100%
+    {
+        transform: translateY(0);
+        border-color: #CCC;
+        border-width: 1px;
+    }
+}
+
+.num1 .animationDiv
+{
+    animation: AnimationDiv 2s;
+    
+}
+
+.num1 div
+{
+    height: 100px;
+    width: 100px;
+    background-color: #F00;
+}
+
+
+
+.num2 section,
+.num3 section
+{
+    margin-top: 20px;
+}
+
+.num3 .liste-item
+{
+    margin-top: 0px;
+}
+
+.num3 input{
+    height: 18px;
+    border: 2px solid #000;
+    padding : 5px;
+    font-size: 16px;
+    width: 400px;
+}
+.num2 .item,
+.num3 .item
+{
+    padding : 5px;
+    border: 1px solid #CCC;
+    width: 400px;
+    display: flex;
+    font-size: 16px;
+}
+.num2 .item .nom,
+.num3 .item .nom
+{
+    flex-grow: 1;
+}
+.num2 .btn,
+.num3 .btn
+{
+    display: inline-block;
+    height: 0px;
+    width: 0px;
+    margin-left: 10px;
+}
+.num2 .fleche-haut,
+.num3 .fleche-haut
+{
+    border-bottom: 15px solid #000;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;   
+}
+
+.num2 .fleche-bas,
+.num3 .fleche-bas
+{
+    border-top: 15px solid #000;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;   
+}
+
+.num2 .item:first-child .fleche-haut,
+.num3 .item:first-child .fleche-haut,
+.num2 .item:last-child .fleche-bas,
+.num3 .item:last-child .fleche-bas
+{
+    visibility: hidden;
+}
+
+
+
+
+.num3 .animApparaitre
+{
+    animation: AnimApparaitre 250ms;
+    
+}
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+.num1 ~ footer > [data-num="num1"],
+.num2 ~ footer > [data-num="num2"],
+.num3 ~ footer > [data-num="num3"]
+{
+    visibility: hidden;
+}

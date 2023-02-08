@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="./src/num1.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>Exercice sur le DOM</h1>
+        <section class="num1">
+            <h2>Numéro 1 : Déclenchements anim css</h2>
+            <p>Créer le code javascript qui permet de démarrer l'animation CSS AnimationDiv lorsqu'on appuie sur le bouton Démarrer animation 1. Pensez à gérer votre interface graphique, une fois que l'animation est lancée que se passe-t-il si j'appuie encore sur le bouton? Est-il nécessaire de pouvoir le faire? Aussi, il n'est pas nécessaire de pouvoir démarrer l'animation plusieurs fois, par contre, si vous voulez le faire, il existe un événement javascript qui est appelé à la fin d'une animation.</p>
+            <details>
+                <summary>Méthodes et propriétés utiles : </summary>
+                <ul>
+                    <li>addEventListener (événement : load, click, animationend)</li>
+                    <li>querySelector, querySelectorAll</li>
+                    <li>classList (add, remove, contains, etc)</li>                    
+                </ul>
+            </details>
+            <p>Vous ne pouvez pas modifier le code du fichier html. Tout doit se faire par JavaScript, dans le fichier num1.js</p>
+
+            <div class="maDiv">Ma div à animer</div>
+            <button class="btn_num1 ">Démarrer animation 1</button>
+        </section>
+        <footer>
+            <a data-num="num1" href="numero1.html">Vers numéro 1</a>
+            <a data-num="num2" href="numero2.html">Vers numéro 2</a>
+            <a data-num="num3" href="numero3.html">Vers numéro 3</a>
+        </footer>
+    </body>
+</html>

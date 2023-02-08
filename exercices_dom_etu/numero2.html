@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="./src/num2.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>Exercice sur le DOM</h1>
+        <section class="num2">
+            <h2>Numéro 2 : Changer l'ordre des items du DOM</h2>
+            <p>Créer le code javascript qui permet de réorganiser l'ordre des éléments du DOM en appuyant sur les flèches (haut et bas). Votre code doit être capable de gérer une liste plus ou moins longue d'items. Et pourquoi pas une liste dynamique d'item?</p>
+            <details>
+                <summary>Méthodes et propriétés utiles : </summary>
+                <ul>
+                    <li>addEventListener()</li>
+                    <li>événement load, click</li>
+                    <li>querySelector(), querySelectorAll()</li>
+                    <li>parentElement, previousElementSibling, nextElementSibling</li>
+                    <li>parentElement.insertBefore()</li>
+                </ul>
+            </details>
+            <p>Vous ne pouvez pas modifier le code du fichier html. Tout doit se faire par JavaScript, dans le fichier num2.js</p>
+            <section>
+                <div class="item"><span class="nom">Item 1</span> <span class="btn fleche-haut"></span><span class="btn fleche-bas"></span></div>
+                <div class="item"><span class="nom">Item 2</span> <span class="btn fleche-haut"></span><span class="btn fleche-bas"></span></div>
+                <div class="item"><span class="nom">Item 3</span> <span class="btn fleche-haut"></span><span class="btn fleche-bas"></span></div>
+                <div class="item"><span class="nom">Item 4</span> <span class="btn fleche-haut"></span><span class="btn fleche-bas"></span></div>
+            </section>
+        </section>
+        <footer>
+            <a data-num="num1" href="numero1.html">Vers numéro 1</a>
+            <a data-num="num2" href="numero2.html">Vers numéro 2</a>
+            <a data-num="num3" href="numero3.html">Vers numéro 3</a>
+        </footer>
+    </body>
+</html>
