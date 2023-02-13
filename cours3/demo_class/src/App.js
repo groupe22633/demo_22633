@@ -1,6 +1,6 @@
 import { cours } from "./data.js";
 import Information from "./Information.js";
-
+import Inscription from "./Inscription.js";
 
 
 export default class App{
@@ -12,7 +12,9 @@ export default class App{
         
         let elementParent = document.querySelector("main");
         let panneauInfo = new Information(elementParent, this.#nbCoursMax);
-        //panneauInfo.afficher();
+        let panneauInscription = new Inscription(elementParent);
+        panneauInfo.afficher();
+        panneauInscription.afficher();
         
         //elementParent.innerHTML = htmlInfo;
 
