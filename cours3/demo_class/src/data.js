@@ -20,16 +20,16 @@
 },{
     sigle : "582-31B",
     nom : "Prog Web Avancée",
-    prof : "",
+    prof : "CJ",
     horaire : ["9h-12h", "14h-17h", "8h-11h"]
 },{
     sigle : "582-31W",
     nom : "CMS",
-    prof : "",
+    prof : "EM",
     horaire : ["19h-22h"]
 },{
     sigle : "582-31D",
     nom : "UX UI",
-    prof : "",
+    prof : "MAC",
     horaire : ["15h-18h", "8h-11h", "9h-12h", "14h-17h"]
 }];
