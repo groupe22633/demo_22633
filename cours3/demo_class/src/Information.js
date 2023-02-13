@@ -1,6 +1,43 @@
 
 export default class Information{
-    constructor(elementParent){
+    formInfo = [
+        {
+            nom : "nom",
+            label : "Nom : ",
+            type : "text",
+            fctValidation : function(){
+                return true;
+            }
+        },
+        {
+            nom : "prenom",
+            label : "Prénom : ",
+            type : "text",
+            fctValidation : function(){
+                return true;
+            }
+        },
+        {
+            nom : "courriel",
+            label : "Courriel : ",
+            type : "email",
+            fctValidation : function(){
+                return true;
+            }
+        },
+        {
+            nom : "nbCours",
+            label : "Nombre de cours : ",
+            type : "number",
+            fctValidation : function(){
+                return true;
+            }
+        }
+    ]
+
+
+    constructor(elementParent, nbCoursMax){
+        this.nbCoursMax = nbCoursMax;
         this.elementParent = elementParent;
         //this.validation();
     }
@@ -11,13 +48,20 @@ export default class Information{
 
     afficher(){
         let chaineHTML = `<fieldset class="information">
-                            <legend>Informations personnelles</legend>
-                            <p><label for="nom">Nom :</label><input type="text" name="nom"></p>
-                            <p><label for="courriel">Courriel :</label><input type="email" name="courriel"></p>
-                            <p><label for="nbCours">Nombre de cours :</label><input type="number" name="nbCours"></p>
-                          </fieldset>`;
+                            <legend>Informations personnelles</legend>`;
+        
+        //this.formInfo.forEach(function(element){
+        for(let element of this.formInfo){
+            chaineHTML += ` <p>
+                                <label for="${element.nom}">${element.label}</label>
+                                <input type="${element.type}" id="${element.nom}" name="${element.nom}">
+                            </p>`
+        }
+                          
+        chaineHTML += `</fieldset>`;
+        
         this.elementParent.innerHTML = chaineHTML;
-                          //return chaineHTML;
+        
 
     }
 }

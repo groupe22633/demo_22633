@@ -12,7 +12,8 @@ export default class App{
         
         let elementParent = document.querySelector("main");
         let panneauInfo = new Information(elementParent, this.#nbCoursMax);
-        panneauInfo.afficher();
+        //panneauInfo.afficher();
+        
         //elementParent.innerHTML = htmlInfo;
 
 
