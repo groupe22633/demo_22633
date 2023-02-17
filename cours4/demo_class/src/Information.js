@@ -1,82 +1,74 @@
-/**
- * Class représentant le composant Information
- * @author Jonathan Martel <jmartel@cmaisonneuve.qc.ca>
- * @update 2023-02-14
- * @license MIT
- */
 
 export default class Information{
-    /**
-     * @typedef champ
-     * @type {Object[]}
-     * @property {string} nom - La valeur du name
-     * @property {string} label - Le texte affiché comme étiquette
-     * @property {string} type - Le type du champs [text, number, email, ...]
-     * @property {function | function[]} fctValidation - une ou plusieurs fonction de validation
-     */
-
-    /**
-     * Information des champs à afficher
-     * @type champ
-     */
     formInfo = [
         {
             nom : "nom",
             label : "Nom : ",
             type : "text",
-            fctValidation : function(){
-                return true;
-            }
+            fctValidation : this.nonVide,
+            valeur:""
         },
         {
             nom : "prenom",
             label : "Prénom : ",
             type : "text",
-            fctValidation : function(){
-                return true;
-            }
+            fctValidation : this.nonVide,
+            valeur:""
         },
         {
             nom : "courriel",
             label : "Courriel : ",
             type : "email",
-            fctValidation : function(){
-                return true;
-            }
+            fctValidation : this.nonVide,
+            valeur:""
+
         },
         {
             nom : "nbCours",
             label : "Nombre de cours : ",
             type : "number",
-            fctValidation : function(){
-                return true;
-            }
+            fctValidation : this.nonVide,
+            valeur:""
+
         }
     ]
 
-    /**
-     * Constructeur
-     * @param {DOMElement} elementParent 
-     * @param {Number} nbCoursMax 
-     */
+
     constructor(elementParent, nbCoursMax){
         this.nbCoursMax = nbCoursMax;
         this.elementParent = elementParent;
         //this.validation();
     }
-    
-    /**
-     * Méthode qui lance la validation du composant
-     * @returns Boolean
-     */
+
     validation(){
+        let aValide =[];
+        let valide = true;
+        for(let elementForm of this.formInfo){
+            elementForm.valeur = document.querySelector(`[name='${elementForm.nom}']`).value;
+            /*if(!elementForm.fctValidation()){
+                valide = false;
+            }*/
+            
+            aValide.push(elementForm.fctValidation());
+            //console.log(elementForm)
+        }
         console.log("validation")
-        return true
+        valide = aValide.every(function(element){
+            return (element === true);
+        })
+        //console.log(indexFalse)
+        /*if() {
+                        
+            valide = true;
+        }*/
+        console.log(valide)
+        return valide;
     }
 
-    /**
-     * Méthode d'affichage du composant
-     */
+    getData(){
+        return {nbCours : 3};
+    }
+
     afficher(){
         let chaineHTML = `<fieldset class="information">
                             <legend>Informations personnelles</legend>`;
@@ -94,5 +86,15 @@ export default class Information{
         this.elementParent.innerHTML = chaineHTML;
         
 
+    }
+
+    nonVide (){
+        console.log(this.valeur);
+        let valide = false;
+        if(this.valeur != ""){
+            valide = true;
+        }
+        console.log(valide)
+        return valide;
     }
 }
