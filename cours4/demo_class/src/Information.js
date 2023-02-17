@@ -5,7 +5,7 @@ export default class Information{
             nom : "nom",
             label : "Nom : ",
             type : "text",
-            fctValidation : this.nonVide,
+            fctValidation : [this.nonVide, this.texte],
             valeur:""
         },
         {
@@ -45,12 +45,14 @@ export default class Information{
         let valide = true;
         for(let elementForm of this.formInfo){
             elementForm.valeur = document.querySelector(`[name='${elementForm.nom}']`).value;
-            /*if(!elementForm.fctValidation()){
-                valide = false;
-            }*/
             
-            aValide.push(elementForm.fctValidation());
-            //console.log(elementForm)
+            if(Array.isArray(elementForm.fctValidation)){
+                for(let fct of elementForm.fctValidation){
+                    aValide.push(fct.bind(elementForm)());    
+                }
+            }else{
+                aValide.push(elementForm.fctValidation());
+            }
         }
         console.log("validation")
         valide = aValide.every(function(element){
@@ -66,7 +68,15 @@ export default class Information{
     }
 
     getData(){
-        return {nbCours : 3};
+        let data = this.formInfo.find(function(element){
+            let bTrouve = false;
+            if(element.nom == "nbCours"){
+                bTrouve = true;
+            }
+            return bTrouve;
+        })
+        console.log(data)
+        return {nbCours : data.valeur};
     }
 
     afficher(){
@@ -92,6 +102,17 @@ export default class Information{
         console.log(this.valeur);
         let valide = false;
         if(this.valeur != ""){
+            valide = true;
+        }
+        console.log(valide)
+        return valide;
+    }
+
+    texte(){
+        console.log(this)
+        let valide = false;
+        
+        if(this.valeur.length >=2){
             valide = true;
         }
         console.log(valide)

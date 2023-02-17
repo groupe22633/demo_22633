@@ -1,3 +1,7 @@
 fieldset{
     height: 300px;
 }
+
+option:checked{
+    background-color: rebeccapurple;
+}
