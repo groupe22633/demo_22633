@@ -1,5 +1,5 @@
 export const mairesMTL = [{
-        "nom": "Plante",
+        "nom": "plante",
         "prenom": "Valérie",
         "debut": 2017,
         "fin": null

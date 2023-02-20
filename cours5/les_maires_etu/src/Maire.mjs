@@ -29,6 +29,7 @@ export default class Maire {
       * @returns {UnMaire[]} - Tableau des résultats;
      */
     rechercheMaires(params){
+        
     }
 
     /**
@@ -39,14 +40,27 @@ export default class Maire {
      * @returns {UnMaire[]} - Tableau des résultats
      */
     listeMaires(params) {
-        
+        let mesMaires = this.#aMaires;
+        if(params.type == "nom"){
+            mesMaires.sort(function(a,b){
+                return a.nom.localeCompare(b.nom, "fr")
+            });
+
+        }
+        else if(params.type == "date"){
+
+        }
+        if(params.ordre == "DESC"){
+            mesMaires.reverse();
+        }
+        return mesMaires;
     }
 
     /**
      * @returns {Number} - Le nombre d'enregistrement dans le tableau des maires
      */
     getNombreMaires(){
-        
+        return this.#aMaires.length;
     }
     
   }

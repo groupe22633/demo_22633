@@ -50,8 +50,8 @@ export default class Inscription{
      * @returns 
      */
     getData(){
-
-        return {cours : ["582-31F", "582-31B"]};
+        console.log(this.coursChoisi)
+        return {cours : this.coursChoisi};
     }
 
     /**
