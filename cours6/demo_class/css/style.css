@@ -1,0 +1,17 @@
+fieldset{
+
+}
+
+option:checked{
+    background-color: rebeccapurple;
+}
+
+.zoneNav{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.filler{
+    flex-grow: 1;
+}
