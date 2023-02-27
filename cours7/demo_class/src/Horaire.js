@@ -20,6 +20,7 @@ export default class Horaire{
             return (boxesHoraire.length >= 1 );
         });
         console.log(valide)
+        return valide;
     }
     /**
      * 
@@ -65,14 +66,32 @@ export default class Horaire{
                                 <legend>Horaire</legend>
                                 <p><label>Horaire préférence : </label></p>
                                 ${chaineHTMLCours}
-                                <button type="submit">Soumettre</button>
+                                <button type="submit" disabled>Soumettre</button>
                             </fieldset>`;
                             
         
         this.elementParent.innerHTML = chaineHTML;
 
+       this.attacherGestionnaire();
+        
+    }
+
+    attacherGestionnaire(){
         let btnSubmit = document.querySelector("[type='submit']");
         btnSubmit.addEventListener("click", this.validation.bind(this));
-        
+
+        let champHoraire = document.querySelector(".horaire");
+        champHoraire.addEventListener("input", (evt)=>{
+            if(evt.target.type == "checkbox"){
+                if(this.validation()){
+                    btnSubmit.disabled = false;
+                }
+                else{
+                    btnSubmit.disabled = true;
+                }
+            }
+            console.log(evt);
+        });
+
     }
 }
