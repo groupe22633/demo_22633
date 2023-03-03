@@ -81,7 +81,7 @@ Section filtre
 }
 
 .filtre [data-js-actif='1']{
-    border: 1px solid #CCC;
+    border: 2px solid rebeccapurple;
 }
 .filtre .choixFiltre{
     list-style-type: none;

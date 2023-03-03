@@ -21,6 +21,7 @@ export default class Catalogue {
                     </header>
                     <img src="${unFilm.image}">
                     <div class="contenu">
+                        <p>${unFilm.dureeHeure}</p>
                         <p>${unFilm.description}</p>
                     </div>
                     <footer class="action">x, y z</footer>
