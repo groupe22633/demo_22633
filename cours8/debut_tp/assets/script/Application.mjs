@@ -13,6 +13,7 @@ export default class Application{
         
         dataGhibli.forEach((unFilm)=>{
             unFilm.dureeHeure = parseInt(unFilm.running_time / 60) + "h"+parseInt(unFilm.running_time % 60).toString().padStart(2, '0');
+            
         })
 
         this.#catalogue.setFilms(dataGhibli);
