@@ -1,0 +1,131 @@
+* {
+    font-family: 'Roboto', sans-serif;
+
+}
+
+html, body {
+    margin:0px;
+    padding:0px;
+}
+
+/****************************
+Top Nav
+****************************/
+.top-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 64px;
+    background-color: turquoise;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.top-nav nav {
+    display: flex;
+    flex-direction: row;
+    margin-right: 32px;
+}
+
+.top-nav a {
+    display: block;
+    margin: 0px 8px;
+    text-align: center;
+}
+/***************************
+* Main
+****************************/
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+main aside {
+    display: flex;
+    flex-direction: column;
+}
+
+/****************************
+Recherche
+*****************************/
+.recherche {
+    padding: 16px 16px;
+    width: 100vw;
+    
+}
+/********************
+Section filtre
+**********************/
+
+.filtre{
+    padding: 16px 16px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    width: 150px;
+    
+}
+.filtre div {
+    display: flex;
+    flex-direction: column;
+    
+    /*margin-left:16px;*/
+}
+.filtre ul{
+    margin:0px;
+    padding: 0px 0px 0px 16px;
+}
+.filtre div span{
+    text-align:end;
+}
+
+.filtre [data-js-actif='1']{
+    border: 1px solid #CCC;
+}
+.filtre .choixFiltre{
+    list-style-type: none;
+    padding: 4px;
+}
+
+.filtre .choixFiltre:hover{
+    background-color: rgba(200,200,200,0.5);
+}
+.liste-categorie{
+    flex-direction: column;
+}
+/**************************
+Section catalogue
+******************************/
+.catalogue{
+    padding: 16px 16px;
+    display: grid;
+    grid-template-columns : repeat(auto-fit, minmax(200px, .25fr));
+    gap:16px;
+    width: calc(95vw - 150px);
+    box-sizing: border-box;
+}
+.catalogue .carte {
+    /*height: 500px;*/
+    overflow-y: hidden;
+}
+.catalogue .carte .contenu {
+    text-overflow: ellipsis;
+}
+.catalogue .carte header{
+    position: absolute;
+    max-width: 200px;
+}
+.catalogue .carte img {
+    object-fit: cover;
+    max-width: 100%;
+    opacity: .2;
+}
+
+/************************
+Utilitaire
+************************/
+
+.filler {
+    flex-grow: 1;
+}
