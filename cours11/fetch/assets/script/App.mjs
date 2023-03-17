@@ -1,5 +1,5 @@
 import Ghibli from "./Ghibli.mjs";
-import Routeur from "./Routeur.mjs";
+//import Routeur from "./Routeur.mjs";
 
 export default class App {
     URLGhibli = "https://ghibliapi.herokuapp.com/";
