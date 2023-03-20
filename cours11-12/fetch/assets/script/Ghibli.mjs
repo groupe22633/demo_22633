@@ -8,10 +8,12 @@ export default class Ghibli{
      * @param {function} cb - Fonction de rappel qui prendra les données en paramètre     
      */
     getFilms(cb){
-       // À essayer avec fetch
-       /**
-        * fetch. then .then ( cb(data))
-        */
+      
+       fetch(this.URLGhibli+ "films")
+        .then(data=>data.json())
+        .then(data=>{
+            cb(data);
+        })
 
     }
     /**
@@ -19,14 +21,21 @@ export default class Ghibli{
      * @returns Promesses
      */
     getFilmsPromise(){
-       
+        return fetch(this.URLGhibli+ "films")
+            .then(data=>data.json())
+        
     }
     /**
      * 
      * @returns array
      */
-    async getFilmsAsync(){
-        
+    async getFilmsAsync(cb){
+        let data = await fetch(this.URLGhibli+ "films");
+        data = await data.json();
+        if(cb){
+            cb(data);
+        }
+        return data;        
     }
 
     /**

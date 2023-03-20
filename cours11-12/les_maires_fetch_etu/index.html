@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+  <head>
+    <title>Exercice 1 : Les maires</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" src="main.js"></script>
+    
+  </head>
+
+  <body>
+    <fieldset class="xhr">
+      <h1>Les maires xhr</h1>
+      <section class="recherche">
+        <label>Nom ou date : </label><input type="text" class="champ-recherche"><button class="btn-recherche-nom">Trouver un maire par nom</button><button class="btn-recherche-date">Trouver un maire par date</button>
+      </section>
+      <section class="recherche">
+        <label>Ordre</label>
+        <input type="radio" name="ordre" value="ASC">ASC
+        <input type="radio" name="ordre" value="DESC">DESC
+        <button class="btn-liste-nom">Liste par nom</button><button class="btn-liste-date">Liste par date</button>
+      </section>
+    </fieldset>
+    <fieldset class="fetch">
+      <h1>Les maires fetch</h1>
+      <section class="recherche">
+        <label>Nom ou date : </label><input type="text" class="champ-recherche"><button class="btn-recherche-nom">Trouver un maire par nom</button><button class="btn-recherche-date">Trouver un maire par date</button>
+      </section>
+      <section class="recherche">
+        <label>Ordre</label>
+        <input type="radio" name="ordre" value="ASC">ASC
+        <input type="radio" name="ordre" value="DESC">DESC
+        <button class="btn-liste-nom">Liste par nom</button><button class="btn-liste-date">Liste par date</button>
+      </section>
+    </fieldset>
+      
+    <section class="affichage-maire">
+      <table class="tbl-resultat">
+        <thead><tr><th>Nom</th><th>Prénom</th><th>Début</th><th>Fin</th></tr></thead>
+        <tbody>
+            <tr><th>Nom</th><th>Prénom</th><th>Début</th><th>Fin</th></tr>
+        </tbody>
+        
+      </table>
+    </section>
+
+  </body>
+</html>
