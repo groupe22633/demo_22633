@@ -10,11 +10,12 @@ export default class App {
         prop:"rt_score",
         ordre: "ASC"
     };
-
+    // 
     #filtreActif = {
         prop:"release_date",
-        valeur: "1988"
+        valeur: ""  // Changer la valeur pour avoir un filtre
     };
+    
     constructor(){
         this.#domParent = document.querySelector(".catalogue");
         
@@ -97,9 +98,13 @@ export default class App {
             console.log(this.#filtreActif)
             let prop = this.#filtreActif.prop;
             let valeur = this.#filtreActif.valeur;
-            aFilms = aFilms.filter((film)=>{
-                return (film[prop] == valeur);
-            })
+            if(valeur){
+                aFilms = aFilms.filter((film)=>{
+
+                    return (film[prop] == valeur);
+                })
+            }
+            
             console.log(this.#aFilms)
         }
         return aFilms
