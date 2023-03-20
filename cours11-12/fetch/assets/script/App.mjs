@@ -3,17 +3,26 @@ import Ghibli from "./Ghibli.mjs";
 
 export default class App {
     URLGhibli = "https://ghibliapi.herokuapp.com/";
-    #routeur;
+    //#routeur;
     #domParent;
 
     constructor(){
         this.#domParent = document.querySelector(".catalogue");
-
+        this.getFilms();
     }
 
     getFilms(){
-        
+        const oGhibli = new Ghibli();
+        oGhibli.getFilmsXHR(function(films){
+            console.log(films);
+            //traiter les films...
+            
+            this.afficherFilms(films);
+        }.bind(this));
+
+        oGhibli.getFilmsXHR(this.afficherFilms.bind(this));
     }
+
 
     async getFilmsAsync(){
         
