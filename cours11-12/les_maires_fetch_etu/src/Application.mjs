@@ -14,8 +14,11 @@ export default class Application {
                       type:"nom", 
                       ordre : "asc", 
                       callback: function(data){
+                        console.log(this)
                           console.log(data)
-                      }};
+                          this.afficher(data);
+                      }.bind(this)};
+
         oFetch.listeMaires(params);
 
       })
@@ -24,4 +27,7 @@ export default class Application {
     /**
     Mettre les autres méthodes ici.
     */
+   afficher(data){
+    console.log(data);
+   }
   }
