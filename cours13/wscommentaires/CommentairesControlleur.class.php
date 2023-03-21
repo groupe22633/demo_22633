@@ -24,12 +24,12 @@ class CommentairesControlleur
 	 */
 	public function getAction(Requete $requete)
 	{
-		
+		var_dump($requete);
         if(isset($requete->url_elements[0]))
         { 
-            if(is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
+			if(is_string($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 		    {                
-                $id = (int)$requete->url_elements[0];
+                $id = $requete->url_elements[0];
                 
                 if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "effacer")	// Normalement l'action (effacer)
                 {
