@@ -1,10 +1,10 @@
-default export class Details{
+export default class Details{
 
     constructor(){
         this.dialogue = document.querySelector(".details");
         
         let btnFermer = document.querySelector(".details .fermer");
-        btnFermer.addEventListener("click", this.fermerDialogue.bind(this));
+        btnFermer.addEventListener("click", this.fermer.bind(this));
         
         const modal = document.querySelector(".details").addEventListener("close", ()=>{
             document.querySelector("body").classList.remove("arretDefilement");
@@ -14,8 +14,8 @@ default export class Details{
     ouvrir(info){
         document.querySelector("body").classList.add("arretDefilement");
         
+        // À refaire, c'est mal fait.
         this.dialogue.querySelector(".id").innerHTML = info.id;
-        
         this.dialogue.querySelector(".title").innerHTML = info.title;
             /*
             @todo : getCommentaires()
@@ -25,10 +25,8 @@ default export class Details{
         this.dialogue.showModal();
         
     }
-    fermerDialogue(evt){
-        let dialogue = document.querySelector(".details");
-        
-        dialogue.close();
+    fermer(){
+        this.dialogue.close();
     }
 
 }

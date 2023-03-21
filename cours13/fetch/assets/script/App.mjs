@@ -1,4 +1,4 @@
-import { Details } from "./Details.mjs";
+import Details from "./Details.mjs";
 import Ghibli from "./Ghibli.mjs";
 //import Routeur from "./Routeur.mjs";
 export default class App {
@@ -162,7 +162,7 @@ export default class App {
         if(carte){
             const id = carte.dataset.id;
             const info = this.getInfo(id);
-            console.log(info)
+            //console.log(info)
             this.#eleDetails.ouvrir(info);
         }
         
