@@ -1,6 +1,6 @@
+import { Details } from "./Details.mjs";
 import Ghibli from "./Ghibli.mjs";
 //import Routeur from "./Routeur.mjs";
-
 export default class App {
     URLGhibli = "https://ghibliapi.herokuapp.com/";
     //#routeur;
@@ -15,7 +15,8 @@ export default class App {
         prop:"release_date",
         valeur: ""  // Changer la valeur pour avoir un filtre
     };
-    
+    #eleDetails;
+
     constructor(){
         this.#domParent = document.querySelector(".catalogue");
         
@@ -28,17 +29,14 @@ export default class App {
         this.getFilms();
         console.log(this.#aFilms)
 
+        this.#eleDetails = new Details();
+        
         /*setInterval(()=>{
             this.getFilms();
         }, 2000);*/
         //this.getFilmsAsync()
 
-        let btnFermer = document.querySelector(".details .fermer");
-        btnFermer.addEventListener("click", this.fermerDialogue.bind(this));
-        
-        const modal = document.querySelector(".details").addEventListener("close", ()=>{
-            document.querySelector("body").classList.remove("arretDefilement");
-        })
+       
     }
 
     getFilms(){
@@ -161,24 +159,16 @@ export default class App {
     }
     ouvrirDetails(evt){
         const carte = evt.target.closest(".carte");
-        document.querySelector("body").classList.add("arretDefilement");
         if(carte){
             const id = carte.dataset.id;
-            let dialogue = document.querySelector(".details");
-            dialogue.querySelector(".id").innerHTML = id;
             const info = this.getInfo(id);
             console.log(info)
-            dialogue.querySelector(".title").innerHTML = info.title;
-
-            dialogue.showModal();
+            this.#eleDetails.ouvrir(info);
         }
         
     }
-    fermerDialogue(evt){
-        let dialogue = document.querySelector(".details");
-        
-        dialogue.close();
-    }
+
+
     afficherFilms(aFilms){
         this.trier();
         aFilms = this.filtrer(aFilms);
