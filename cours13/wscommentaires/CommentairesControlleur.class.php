@@ -68,9 +68,9 @@ class CommentairesControlleur
 	 */
 	public function postAction(Requete $requete)	// Modification
 	{
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de la biere 
+		if(isset($requete->url_elements[0]) && is_string($requete->url_elements[0]))	// Normalement l'id de la biere 
 		{
-			$id = (int)$requete->url_elements[0];
+			$id = $requete->url_elements[0];
 			
 			$this->retour = $this->ajouterCommentaire($id, $requete->parametres);
 			
@@ -139,7 +139,7 @@ class CommentairesControlleur
 	{
 		$res = Array();
 		$oCommentaire = new Commentaires();
-        var_dump($oCommentaire);
+        
 		$res = $oCommentaire->effacerTout();
 		
 		return $res; 
