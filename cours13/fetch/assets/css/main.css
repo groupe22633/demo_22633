@@ -129,3 +129,8 @@ Utilitaire
 .filler {
     flex-grow: 1;
 }
+.arretDefilement{
+    overflow: hidden;
+}
+
+

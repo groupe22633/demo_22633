@@ -19,6 +19,8 @@ export default class App {
     constructor(){
         this.#domParent = document.querySelector(".catalogue");
         
+        this.#domParent.addEventListener("click", this.ouvrirDetails.bind(this));
+
         document.querySelectorAll(".btn-tri").forEach((btn)=>{
             btn.addEventListener("click", this.appliquerTri.bind(this));
         });
@@ -30,6 +32,13 @@ export default class App {
             this.getFilms();
         }, 2000);*/
         //this.getFilmsAsync()
+
+        let btnFermer = document.querySelector(".details .fermer");
+        btnFermer.addEventListener("click", this.fermerDialogue.bind(this));
+        
+        const modal = document.querySelector(".details").addEventListener("close", ()=>{
+            document.querySelector("body").classList.remove("arretDefilement");
+        })
     }
 
     getFilms(){
@@ -140,9 +149,36 @@ export default class App {
         }
         
     }
+    getInfo(id){
+        let valeur = this.#aFilms.find((unFilm)=>{
+            let res =false;
+            if(unFilm.id == id){
+                res = true;
+            }
+            return res;
+        })
+        return valeur;
+    }
+    ouvrirDetails(evt){
+        const carte = evt.target.closest(".carte");
+        document.querySelector("body").classList.add("arretDefilement");
+        if(carte){
+            const id = carte.dataset.id;
+            let dialogue = document.querySelector(".details");
+            dialogue.querySelector(".id").innerHTML = id;
+            const info = this.getInfo(id);
+            console.log(info)
+            dialogue.querySelector(".title").innerHTML = info.title;
 
-
-
+            dialogue.showModal();
+        }
+        
+    }
+    fermerDialogue(evt){
+        let dialogue = document.querySelector(".details");
+        
+        dialogue.close();
+    }
     afficherFilms(aFilms){
         this.trier();
         aFilms = this.filtrer(aFilms);
