@@ -41,8 +41,12 @@ export default class App {
         //this.getFilmsAsync()
 
         this.routeur = new Routeur();
-        this.routeur.ajouterRoute("/", function(){
+        this.routeur.ajouterRoute("/", ()=>{
+            this.afficherAccueil();
             console.log("Route accueil")
+        })
+        this.routeur.ajouterRoute("/toto", ()=>{
+            this.routeur.naviguer("/", true);
         })
         this.routeur.ajouterRoute("/films", this.getFilms.bind(this));
         this.routeur.ajouterRoute("/personnage", this.getPerso.bind(this));
@@ -52,8 +56,8 @@ export default class App {
         this.routeur.demarrer();
     }
 
-    getFilms(){
-        
+    getFilms(infoRoute){
+        console.log(infoRoute)
         this.oGhibli.getRessource("films", (films)=>{
             console.log(films)
             this.#aFilms = films;
@@ -166,16 +170,22 @@ export default class App {
         return valeur;
     }
     ouvrirDetails(evt){
-        const carte = evt.target.closest(".carte");
+        // Naviguer vers une route
+
+
+        /*const carte = evt.target.closest(".carte");
         if(carte){
             const id = carte.dataset.id;
             const info = this.getInfo(id);
             //console.log(info)
             this.#eleDetails.ouvrir(info);
         }
-        
+        */
     }
 
+    afficherAccueil(){
+        this.#domParent.innerHTML = "<h1>Accueil</h1>";
+    }
 
     afficherFilms(aFilms){
         this.trier();

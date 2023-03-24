@@ -5,7 +5,10 @@ export default class Routeur {
      * exemple #routes.detail.cb = function(){}
      */
     #routes = {};
-    
+    #dataRoute = {
+        routeActive : [],
+        parametres : {}
+    }
     /**
      * Ajoute une nouvelle route
      * @param {String} route 
@@ -33,15 +36,35 @@ export default class Routeur {
         }
         history.pushState({}, "", hash);
         this.#changeRoute(hash);
-
+        console.log(this.#routes)
     }
+
+    naviguer (route, bRedirection){
+        let regExp = /^\/.*/;
+        if(!regExp.test(route)){
+            route = `/${route}`;    // force le format '/route'
+        }
+        let hash = `#!${route}`;
+
+        if(bRedirection){
+            history.replaceState({}, "", hash);
+        }
+        else{
+            history.pushState({}, "", hash);
+        }
+        this.#changeRoute(hash);
+    }
+
 
     #changeRoute(hash){
         
         let route = hash.match(/#!(.*)$/)[1];
         console.log(route);
+        this.#getParametreRoute(hash);
+        route = this.#dataRoute.routeActive[0];
+        
         if(this.#routes[route] && this.#routes[route].cb){
-            this.#routes[route].cb();
+            this.#routes[route].cb(this.#dataRoute);
         }
     }
 
@@ -51,4 +74,40 @@ export default class Routeur {
         this.#changeRoute(hash);
     }
 
+    #getParametreRoute(hash){
+        // chaine type 0  : #!/ -Aucun paramètres
+        // chaine type 1  : #!/route - Aucun paramètres
+        // chaine type 2  : #!/route/route - Aucun paramètres
+        // chaine type 3  : #!/route/?cle=valeur&cle=valeur- Un ou plusieurs paramètres
+        // chaine type 4  : #!/route/route/routeN/?cle=valeur&cle=valeur- Un ou plusieurs paramètres
+        // chaine type 5  : #!/route/identifiant?cle=valeur&cle=valeur- Un ou plusieurs paramètres avec un élément de route variable
+        
+        let route = hash.match(/#!(.*)$/)[1];
+
+        if(route.includes("?")){    // cas ou ?cle=valeur
+
+        }
+        if(route != "/"){
+            // Si avant /route1/Route2/
+            if(route.charAt(route.length-1) == "/"){    // gestion du / à la fin
+                route = route.substring(0, route.length-1);
+            }
+            // après /route1/Route2
+            let element = route.split("/");
+            if(element[0] == ""){
+                element.shift();
+            }
+            element = element.map((unElement)=>{
+                return `/${unElement}`;
+            })
+            this.#dataRoute.routeActive = element;
+
+        }
+        else{
+            this.#dataRoute.routeActive = ['/'];
+        }
+        
+        console.log(this.#dataRoute)
+        
+    }
 }
