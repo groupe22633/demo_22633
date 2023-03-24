@@ -54,6 +54,18 @@ export default class Ghibli{
     }
 
     
+    /**
+     * 
+     * @param {String} ressource
+     * @param {function} cb - Fonction de rappel qui prendra les données en paramètre     
+     */
+    getRessource(ressource, cb){
+        fetch(this.URLGhibli + ressource)
+            .then(data=>data.json())
+            .then(data=>{
+                cb(data);
+            })
 
+    }
 
 }
