@@ -26,12 +26,22 @@
         </nav>
         
     </header> 
+    <section class="message">
+
+    </section>
     <main>
         <section class="btn">
             <button class="btn-tri" data-type= "string" data-tri="title">Trier par titre</button>
             <button class="btn-tri" data-type= "number" data-tri="running_time">Durée</button>
             <button class="btn-tri" data-type= "number" data-tri="rt_score">Score</button>
         </section>
+
+        <section class="lien">
+            <a href="#!/films?tri=title&ordre=ASC">Trier par titre (ASC)</a>
+            <a href="#!/films?tri=title&ordre=DESC">Trier par titre (DESC)</a>
+            
+        </section>
+        
         
         <section class="catalogue">
             <article class="carte">
@@ -184,5 +194,23 @@
             <button class="fermer">Fermer</button>
         </dialog>
     </main>
+
+    <script type="tmpl" id="gabaritFilm">
+        <article data-id="{{id}}" class="carte">
+            <header>
+                <h2>{{title}} ({{release_date}})</h2>
+                <h3>{{original_title}}</h3>
+                <p>Durée : {{running_time}}
+            </header>
+            <img src="{{image}}">
+            <div class="contenu">
+                <p>{{ description }}</p>    
+            </div>
+        </article>
+
+    </script>
+    <script type="tmpl" id="accueil">
+        <h1>Allo toto, rebienvenue</h1>
+    </script>
 </body>
 </html>

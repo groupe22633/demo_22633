@@ -36,7 +36,8 @@ export default class Routeur {
         }
         history.pushState({}, "", hash);
         this.#changeRoute(hash);
-        console.log(this.#routes)
+        //console.log(this.#routes)
+        this.#routes['/']
     }
 
     naviguer (route, bRedirection){
@@ -59,7 +60,7 @@ export default class Routeur {
     #changeRoute(hash){
         
         let route = hash.match(/#!(.*)$/)[1];
-        console.log(route);
+        //console.log(route);
         this.#getParametreRoute(hash);
         route = this.#dataRoute.routeActive[0];
         
@@ -69,7 +70,7 @@ export default class Routeur {
     }
 
     #dePopState(evt){
-        console.log(evt)
+        //console.log(evt)
         let hash = location.hash;
         this.#changeRoute(hash);
     }
@@ -85,7 +86,24 @@ export default class Routeur {
         let route = hash.match(/#!(.*)$/)[1];
 
         if(route.includes("?")){    // cas ou ?cle=valeur
+            
+            let parametres = route.split("?");  //[ route, queryString]
+            route = parametres.shift(); // Assigne la route
+            parametres = parametres.shift();    // Assigne le queryString
 
+            if(parametres.length > 1){
+                //console.log(parametres)
+                parametres = parametres.split("&");
+                //console.log(parametres)
+                parametres = parametres.map((unParametre)=>{
+                    return unParametre.split("=");
+                })
+                //console.log(parametres)
+                parametres = Object.fromEntries(parametres);
+                this.#dataRoute.parametres = parametres;
+            }
+            
+            //console.log(parametres)
         }
         if(route != "/"){
             // Si avant /route1/Route2/
@@ -107,7 +125,7 @@ export default class Routeur {
             this.#dataRoute.routeActive = ['/'];
         }
         
-        console.log(this.#dataRoute)
+        //console.log(this.#dataRoute)
         
     }
 }

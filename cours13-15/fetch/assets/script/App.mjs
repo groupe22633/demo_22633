@@ -1,3 +1,4 @@
+import Affichage from "./Affichage.mjs";
 import Details from "./Details.mjs";
 import Ghibli from "./Ghibli.mjs";
 import Routeur from "./Routeur.mjs";
@@ -20,6 +21,8 @@ export default class App {
     #eleDetails;
 
     constructor(){
+
+        //Affichage.afficher({}, document.querySelector("#accueil").innerHTML, document.querySelector(".message"));
         this.#domParent = document.querySelector(".catalogue");
         
         this.#domParent.addEventListener("click", this.ouvrirDetails.bind(this));
@@ -54,14 +57,39 @@ export default class App {
         this.routeur.ajouterRoute("/espece", this.getEspece.bind(this));
         this.routeur.ajouterRoute("/vehicule", this.getVehicule.bind(this));
         this.routeur.demarrer();
+
+        
     }
 
     getFilms(infoRoute){
+        
         console.log(infoRoute)
         this.oGhibli.getRessource("films", (films)=>{
-            console.log(films)
             this.#aFilms = films;
-            this.afficherFilms(films);
+            if(infoRoute.parametres.tri){
+                this.#triActif.type = "string";
+                console.log("il faut trier");
+                let prop = infoRoute.parametres.tri;
+                this.#triActif.prop = infoRoute.parametres.tri;;
+                this.#triActif.ordre = (infoRoute.parametres.ordre || "ASC");
+                this.trier();
+            }
+            if(infoRoute.parametres.filtre){
+                this.#filtreActif.prop = infoRoute.parametres.filtre;
+                this.#filtreActif.valeur = infoRoute.parametres.valeur;
+
+                this.#aFilms = this.filtrer( this.#aFilms);
+                console.log(this.#aFilms)
+                console.log("il faut filtrer")
+            }
+    
+            if(infoRoute.parametres.recherche){
+                console.log("il faut exécuter la recherche")
+            }
+
+            console.log(films)
+            //this.#aFilms = films;
+            this.afficherFilms(this.#aFilms);
         })
     }
 
@@ -98,7 +126,10 @@ export default class App {
     }
 
     appliquerTri(evt){
-        if(this.#triActif.prop == evt.target.dataset.tri){
+        let route = `/films?tri=${evt.target.dataset.tri}&ordre=${this.#triActif.ordre}`;
+        this.routeur.naviguer(route);
+
+        /*if(this.#triActif.prop == evt.target.dataset.tri){
             if(this.#triActif.ordre == "ASC"){
                 this.#triActif.ordre = "DESC"
             }else{
@@ -109,7 +140,7 @@ export default class App {
             this.#triActif.ordre = "ASC";
         }
         this.#triActif.type = evt.target.dataset.type;
-        this.afficherFilms(this.#aFilms);
+        this.afficherFilms(this.#aFilms);*/
     }
     
     filtrer(aFilms){    
@@ -188,9 +219,13 @@ export default class App {
     }
 
     afficherFilms(aFilms){
-        this.trier();
-        aFilms = this.filtrer(aFilms);
-
+       //this.trier();
+        //aFilms = this.filtrer(aFilms);
+        let gabaritFilm = document.querySelector("#gabaritFilm").innerHTML;
+        
+        Affichage.afficher(aFilms, gabaritFilm, this.#domParent);
+        
+        /*
         console.log(aFilms)
         let chaineHtml = "";
         let chainePerso = [];
@@ -209,7 +244,7 @@ export default class App {
                             </article>`;
 
         });
-        this.#domParent.innerHTML = chaineHtml;
+        this.#domParent.innerHTML = chaineHtml;*/
     }
 
     afficherEspece(aData){

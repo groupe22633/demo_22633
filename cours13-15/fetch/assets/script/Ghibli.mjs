@@ -61,6 +61,7 @@ export default class Ghibli{
      */
     getRessource(ressource, cb){
         fetch(this.URLGhibli + ressource)
+        //fetch("./assets/data/films.json")
             .then(data=>data.json())
             .then(data=>{
                 cb(data);
